@@ -1,0 +1,25 @@
+[package]
+name = "example-stm32f072rb"
+version = "0.1.0"
+authors = ["Vadim Kaushan <admin@disasm.info>"]
+edition = "2018"
+
+[dependencies]
+cortex-m = "0.6"
+cortex-m-rt = "0.6.8"
+stm32f0xx-hal = { version = "0.16.0", features = ["rt", "stm32f070x6", "stm32-usbd"] }
+panic-halt = "0.2"
+usb-device = "0.2.3"
+usbd-serial = "0.1"
+stm32-usbd = { version = "0.5.1", features = ["ram_access_1x16"], optional = true }
+
+[profile.dev]
+debug = true
+lto = true
+opt-level = "s"
+
+[profile.release]
+lto = true
+debug = true
+opt-level = "s"
+
